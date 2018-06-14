@@ -39,7 +39,9 @@ public class Combat extends ClientAccessor {
 	 * @return wilderness level
 	 */
 	public int wildernessLevel(){
-		return ctx.widgets.component(Constants.WILDERNESS_LEVEL_WIDGET[0], Constants.WILDERNESS_LEVEL_WIDGET[1]).valid() ? Integer.parseInt(ctx.widgets.component(Constants.WILDERNESS_LEVEL_WIDGET[0], Constants.WILDERNESS_LEVEL_WIDGET[1]).text().replaceAll("[^0-9]", "")) ? -1;
+		return ctx.widgets.component(Constants.WILDERNESS_LEVEL_WIDGET[0], Constants.WILDERNESS_LEVEL_WIDGET[1]).valid() ? 
+			Integer.parseInt(ctx.widgets.component(Constants.WILDERNESS_LEVEL_WIDGET[0], Constants.WILDERNESS_LEVEL_WIDGET[1]).text().replaceAll("[^0-9]", "")) 
+			: -1;
 
 	/**
 	 * Returns your player's max health.
