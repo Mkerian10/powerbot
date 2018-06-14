@@ -150,4 +150,6 @@ public final class Constants {
 	};
 	//Textures of "X" close button
 	public static final int[] CLOSE_BUTTON_TEXTURES = {831, 535, 537};
+	
+	public static final int[] WILDERNESS_LEVEL_WIDGET = {90, 46};
 }
