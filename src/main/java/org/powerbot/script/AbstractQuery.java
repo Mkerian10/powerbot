@@ -271,6 +271,15 @@ public abstract class AbstractQuery<T extends AbstractQuery<T, K, C>, K, C exten
 	public boolean isEmpty() {
 		return items.get().isEmpty();
 	}
+	
+	/**
+	* Returns {@code true} if the query cache contains one or more items.
+	*
+	* @return {@code true} if the query cache contains one or more items.
+	*/
+	public boolean exists() {
+		return !isEmpty();
+	}
 
 	/**
 	 * Returns {@code true} if the query cache contains the specified item.
