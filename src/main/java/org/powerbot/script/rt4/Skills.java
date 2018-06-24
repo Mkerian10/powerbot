@@ -21,7 +21,8 @@ public class Skills extends ClientAccessor {
 	}
 
 	/**
-	 * Returns the real level of the skill at the provided index.
+	 * Returns the effective level of the skill at the provided index.
+	 * (This is the level that is effected by boosts/reductions)
 	 *
 	 * @param index the index of the skill
 	 * @return the current level at the specified index
@@ -35,10 +36,11 @@ public class Skills extends ClientAccessor {
 	}
 
 	/**
-	 * Returns the effective level of the skill at the provided index.
+	 * Returns the hard level of the skill at the provided index.
+	 * (This is the level that stays the same and reflects your true level)
 	 *
 	 * @param index the index of the skill
-	 * @return the real level at the specified index
+	 * @return the hard level at the specified index
 	 */
 	public int level(final int index) {
 		final int[] levels = levels();
