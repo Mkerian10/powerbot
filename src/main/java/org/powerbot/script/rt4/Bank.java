@@ -185,6 +185,14 @@ public class Bank extends ItemQuery<Item> {
 			}
 		}, 30, 10));
 	}
+	
+	/**
+	 * @param useEscape If true it will attempt to use the escape key to close the bank
+	 * @return {@code true} if the bank is not opened, or if it was successfully closed; otherwise {@code false}
+	 */
+	public boolean close(final boolean useEscape){
+		return (useEscape && ctx.game.escapeClosing() && ctx.input.send("{VK_ESCAPE}")) || close();
+	}
 
 	/**
 	 * Withdraws an item with the provided id and amount.
