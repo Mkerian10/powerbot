@@ -191,7 +191,11 @@ public class Bank extends ItemQuery<Item> {
 	 * @return {@code true} if the bank is not opened, or if it was successfully closed; otherwise {@code false}
 	 */
 	public boolean close(final boolean useEscape){
-		return (useEscape && ctx.game.escapeClosing() && ctx.input.send("{VK_ESCAPE}")) || close();
+		if(!opened()){
+			return true;
+		}
+		return (useEscape && ctx.game.escapeClosing() && ctx.input.send("{VK_ESCAPE}") && Condition.wait(() -> !opened, 30, 10); 
+			|| close();
 	}
 
 	/**
