@@ -213,9 +213,10 @@ public class Bank extends ItemQuery<Item> {
 	 *
 	 * @param item   the item instance
 	 * @param amount the amount to withdraw
+	 * @param validate whether to check if the item was successfully withdrawn
 	 * @return {@code true} if the item was withdrawn, does not determine if amount was matched; otherwise, {@code false}
 	 */
-	public boolean withdraw(final Item item, final int amount) {
+	public boolean withdraw(final Item item, final int amount, final boolean validate) {
 		if (!opened() || !item.valid() || amount < -1) {
 			return false;
 		}
@@ -271,14 +272,33 @@ public class Bank extends ItemQuery<Item> {
 				return false;
 			}
 			Condition.sleep();
-			ctx.input.sendln(amount + "");
+			if(!validate){
+				return ctx.input.sendln(amount + "");
+			}else{
+				ctx.input.sendln(amount + "");
+			}
 		}
+		if(!validate){
+			return false;
+		}
+		
 		return Condition.wait(new Condition.Check() {
 			@Override
 			public boolean poll() {
 				return cache != ctx.inventory.select().count(true);
 			}
 		});
+	}
+	
+	/**
+	 * Withdraws an item with the provided item and amount. Validates withdrawl
+	 *
+	 * @param item   the item instance
+	 * @param amount the amount to withdraw
+	 * @return {@code true} if the item was withdrawn, does not determine if amount was matched; otherwise, {@code false}
+	 */
+	public boolean withdraw(final Item item, final int amount){
+		return withdraw(item, amount, true);
 	}
 
 
