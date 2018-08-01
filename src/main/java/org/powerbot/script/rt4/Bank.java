@@ -194,7 +194,7 @@ public class Bank extends ItemQuery<Item> {
 		if(!opened()){
 			return true;
 		}
-		return (useEscape && ctx.game.escapeClosing() && ctx.input.send("{VK_ESCAPE}") && Condition.wait(() -> !opened, 30, 10); 
+		return (useEscape && ctx.game.escapeClosing() && ctx.input.send("{VK_ESCAPE}") && Condition.wait(() -> !opened, 30, 10)) 
 			|| close();
 	}
 
