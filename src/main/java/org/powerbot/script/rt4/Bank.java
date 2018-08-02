@@ -246,7 +246,10 @@ public class Bank extends ItemQuery<Item> {
 		} else {
 			action = "Withdraw-X";
 		}
-		final int cache = ctx.inventory.select().count(true);
+		
+		final int cache;
+		if(!validate) cache = ctx.inventory.select().count(true);
+		
 		if(!item.component().visible()){
          	   ctx.bank.currentTab(0);
         	}
