@@ -7,30 +7,24 @@ import java.util.List;
  * Equipment
  * A utility class for interacting with worn items on the player.
  */
-public class Equipment extends ItemQuery<Item> {
+public class Equipment extends ItemQuery<Item>{
 	public Equipment(final ClientContext factory) {
 		super(factory);
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	protected List<Item> get() {
-		final List<Item> items = new ArrayList<Item>(11);
-		final int[] data = ctx.players.local().appearance();
+		final List<Item> items = new ArrayList<>(11);
 		for (final Slot slot : Slot.values()) {
-			final int index = slot.getIndex();
 			final Component c = ctx.widgets.widget(Constants.EQUIPMENT_WIDGET).component(slot.getComponentIndex()).component(1);
-			final boolean v = c.visible();
-			if (index < 0 || (index >= data.length || data[index] < 0) && !v) {
-				continue;
-			}
-			items.add(new Item(ctx, c, v ? c.itemId() : data[index], v ? c.itemStackSize() : 1));
+			items.add(new Item(ctx, c, c.itemId(), c.itemStackSize()));
 		}
 		return items;
 	}
-
+	
 	/**
 	 * Returns the {@link org.powerbot.script.rt4.Item} at the spcified {@link Slot}.
 	 *
@@ -39,18 +33,13 @@ public class Equipment extends ItemQuery<Item> {
 	 */
 	public Item itemAt(final Slot slot) {
 		final int index = slot.getIndex();
-		final int[] data = ctx.players.local().appearance();
 		if (index < 0) {
 			return nil();
 		}
 		final Component c = ctx.widgets.widget(Constants.EQUIPMENT_WIDGET).component(slot.getComponentIndex()).component(1);
-		final boolean v = c.visible();
-		if ((index >= data.length || data[index] < 0) && !v) {
-			return nil();
-		}
-		return new Item(ctx, c, v ? c.itemId() : data[index], v ? c.itemStackSize() : 1);
+		return new Item(ctx, c, c.itemId(), c.itemStackSize());
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -58,7 +47,7 @@ public class Equipment extends ItemQuery<Item> {
 	public Item nil() {
 		return new Item(ctx, null, -1, -1);
 	}
-
+	
 	/**
 	 * An enumeration of equipment slots.
 	 */
@@ -75,16 +64,16 @@ public class Equipment extends ItemQuery<Item> {
 		RING(12, 15),
 		QUIVER(13, 16);
 		private final int index, component;
-
+		
 		Slot(final int index, final int component) {
 			this.index = index;
 			this.component = component;
 		}
-
+		
 		public int getIndex() {
 			return index;
 		}
-
+		
 		public int getComponentIndex() {
 			return component;
 		}
