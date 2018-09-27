@@ -16,6 +16,13 @@ import org.powerbot.script.Tile;
  */
 public class Bank extends ItemQuery<Item> {
 
+	public static final int WITHDRAW_ALL = 0;
+	
+	public static final int WITHDRAW_BUT_ONE = -1;
+	
+	public static final int WITHDRAW_X = -3;
+	
+	
 	public Bank(final ClientContext ctx) {
 		super(ctx);
 	}
