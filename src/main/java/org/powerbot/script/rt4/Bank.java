@@ -15,6 +15,12 @@ import org.powerbot.script.Tile;
  * A utility class for withdrawing and depositing items, opening and closing the bank, and finding the closest usable bank.
  */
 public class Bank extends ItemQuery<Item> {
+	
+	public static final int WITHDRAW_ALL = 0;
+	
+	public static final int WITHDRAW_BUT_ONE = -1;
+	
+	public static final int WITHDRAW_X = -3;
 
 	public Bank(final ClientContext ctx) {
 		super(ctx);
