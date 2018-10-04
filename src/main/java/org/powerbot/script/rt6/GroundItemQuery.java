@@ -1,6 +1,7 @@
 package org.powerbot.script.rt6;
 
 import java.util.regex.Pattern;
+import java.util.Collection;
 
 import org.powerbot.script.AbstractQuery;
 import org.powerbot.script.Actionable;
@@ -89,6 +90,14 @@ public abstract class GroundItemQuery<K extends Locatable & Identifiable & Namea
 	public GroundItemQuery<K> id(final int... ids) {
 		return select(new Identifiable.Matcher(ids));
 	}
+			
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public GroundItemQuery<K> id(final Collection<Integer> ids) {
+		return select(new Identifiable.Matcher(ids));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -166,6 +175,22 @@ public abstract class GroundItemQuery<K extends Locatable & Identifiable & Namea
 	 */
 	@Override
 	public GroundItemQuery<K> action(final Pattern... actions) {
+		return select(new Actionable.Matcher(actions));
+	}
+			
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public GroundItemQuery<K> action(final Collection<String> actions) {
+		return select(new Actionable.Matcher(actions));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public GroundItemQuery<K> action(final Collection<Pattern> actions) {
 		return select(new Actionable.Matcher(actions));
 	}
 
