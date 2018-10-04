@@ -1,6 +1,7 @@
 package org.powerbot.script;
 
 import java.util.regex.Pattern;
+import java.util.Collection;
 
 /**
  * Actionable
@@ -53,6 +54,14 @@ public interface Actionable extends Interactive {
 		public Matcher(final Pattern... actions) {
 			regex = actions;
 			str = null;
+		}
+		
+		public Matcher(final Collection<String> actions){
+			this(actions.toString(new String[actions.size]);
+		}
+			     
+		public Matcher(final Collection<Pattern> actions){
+			this(actions.toString(new String[actions.size]);
 		}
 
 		@Override
