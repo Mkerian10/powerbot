@@ -36,6 +36,14 @@ public interface Identifiable {
 		 * @return {@code this} for the purpose of method chaining
 		 */
 		T id(int[]... ids);
+		
+		/**
+		 * Selects the entities which have one of the provided ids into the query cache.
+		 *
+		 * @param ids the valid id arrays to check
+		 * @return {@code this} for the purpose of method chaining
+		 */
+		T id(final Collection<Integer> ids);
 
 		/**
 		 * Selects the entities which have one of the provided ids into the query cache.
