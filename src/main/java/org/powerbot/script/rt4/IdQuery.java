@@ -1,5 +1,7 @@
 package org.powerbot.script.rt4;
 
+import java.util.Collection;
+
 import org.powerbot.script.AbstractQuery;
 import org.powerbot.script.Identifiable;
 
@@ -28,6 +30,14 @@ public abstract class IdQuery<K extends Identifiable> extends AbstractQuery<IdQu
 	 */
 	@Override
 	public IdQuery<K> id(final int... ids) {
+		return select(new Identifiable.Matcher(ids));
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public IdQuery<K> id(final Collection<Integer> ids) {
 		return select(new Identifiable.Matcher(ids));
 	}
 
