@@ -1,5 +1,7 @@
 package org.powerbot.script;
 
+import java.util.Collection;
+
 /**
  * Identifiable
  * An entity which has an identifier.
@@ -59,6 +61,10 @@ public interface Identifiable {
 			for (int i = 0; i < ids.length; i++) {
 				this.ids[i] = ids[i].id();
 			}
+		}
+		
+		public Matcher(final Collection<Integer> ids){
+			this(ids.toString(new Integer[ids.size]);
 		}
 
 		@Override
