@@ -88,6 +88,14 @@ public abstract class BasicQuery<K extends Locatable & Identifiable & Nameable &
 	public BasicQuery<K> id(final int... ids) {
 		return select(new Identifiable.Matcher(ids));
 	}
+			
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public BasicQuery<K> id(final Collection<Integer> ids) {
+		return select(new Identifiable.Matcher(ids));
+	}
 
 	/**
 	 * {@inheritDoc}
