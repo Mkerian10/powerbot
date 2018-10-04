@@ -29,6 +29,14 @@ public interface Actionable extends Interactive {
 		 * @return {@code this} for the purpose of method chaining
 		 */
 		T action(String... actions);
+		
+		/**
+		 * Selects the entities which have one of the specified actions into the query cache.
+		 *
+		 * @param actions the valid actions
+		 * @return {@code this} for the purpose of method chaining
+		 */
+		T action(final Collection<String> actions);
 
 		/**
 		 * Selects the entities which have any action which matches one of the specified action patterns into the query cache.
@@ -37,6 +45,14 @@ public interface Actionable extends Interactive {
 		 * @return {@code this} for the purpose of method chaining
 		 */
 		T action(Pattern... actions);
+		
+		/**
+		 * Selects the entities which have any action which matches one of the specified action patterns into the query cache.
+		 *
+		 * @param actions the valid patterns to check RegEx against
+		 * @return {@code this} for the purpose of method chaining
+		 */
+		T action(final Collection<Pattern> actions);
 	}
 
 	/**
