@@ -13,7 +13,7 @@ import org.powerbot.bot.rt4.client.Projectile;
  * <p>
  * {@link org.powerbot.script.rt4.Projectile}s are game projectiles on the current plane which target an entity.
  */
-public class Projectiles extends IdQuery<org.powerbot.script.rt4.Projectile> {
+public class Projectiles<K extends Projectile> extends IdQuery<K> {
 	public Projectiles(final ClientContext factory) {
 		super(factory);
 	}
