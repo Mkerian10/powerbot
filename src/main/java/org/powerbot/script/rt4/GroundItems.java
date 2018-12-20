@@ -13,7 +13,7 @@ import org.powerbot.script.Tile;
 /**
  * GroundItems
  */
-public class GroundItems<K extends Locatable & Identifiable & Nameable & Viewable & Actionable> extends BasicQuery<K> {
+public class GroundItems<K extends GroundItem> extends BasicQuery<K> {
 	public GroundItems(final ClientContext ctx) {
 		super(ctx);
 	}
