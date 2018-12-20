@@ -8,7 +8,7 @@ import org.powerbot.bot.rt4.client.Client;
 /**
  * Npcs
  */
-public class Npcs extends BasicQuery<Npc> {
+public class Npcs<K extends Locatable & Identifiable & Nameable & Viewable & Actionable> extends BasicQuery<K> {
 	public Npcs(final ClientContext ctx) {
 		super(ctx);
 	}
