@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Widgets
  */
-public class Widgets extends IdQuery<Widget> {
+public class Widgets<K extends Identifiable> extends IdQuery<K> {
 	private Widget[] sparseCache;
 
 	public Widgets(final ClientContext ctx) {
