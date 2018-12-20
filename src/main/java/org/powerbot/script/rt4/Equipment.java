@@ -7,7 +7,7 @@ import java.util.List;
  * Equipment
  * A utility class for interacting with worn items on the player.
  */
-public class Equipment extends ItemQuery<Item> {
+public class Equipment<K extends Identifiable & Nameable & Stackable & Viewable & Actionable> extends ItemQuery<K> {
 	public Equipment(final ClientContext factory) {
 		super(factory);
 	}
