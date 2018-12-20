@@ -13,7 +13,7 @@ import org.powerbot.script.Locatable;
 /**
  * Objects
  */
-public class Objects extends BasicQuery<GameObject> {
+public class Objects<K extends Locatable & Identifiable & Nameable & Viewable & Actionable> extends BasicQuery<K> {
 	private GameObject NIL;
 
 	public Objects(final ClientContext ctx) {
