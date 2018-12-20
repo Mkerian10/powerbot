@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Inventory
  */
-public class Inventory extends ItemQuery<Item> {
+public class Inventory<K extends Identifiable & Nameable & Stackable & Viewable & Actionable> extends ItemQuery<K> {
 	public Inventory(final ClientContext ctx) {
 		super(ctx);
 	}
